@@ -99,22 +99,68 @@ This comprehensive approach transforms raw data into actionable intelligence, si
         git clone https://github.com/Sonjoy95/Telecom-Customers-Churn-Predictive-Analysis.git
         cd Telecon-Customer-Churn-Predictive-Analysis
         ```
-    2.  **Create and Activate Environment:**
+    2.  ## Setting Up the Project Environment
+   - To ensure the project runs correctly and to avoid dependency conflicts with other Python projects on your system, it's highly recommended to use a virtual                    environment with **Python 3.10.2**.
+
+  - **Important Pre-requisite:**
+  Before proceeding, verify that you have **Python 3.10.2** installed on your system. You can check your default Python version by running `python --version` (or `python3 --version`). If Python 3.10.2 is not installed, please download and install it from the [official Python website](https://www.python.org/downloads/release/python-3102/).
+
+Follow these steps to set up the environment:
+
+   *  **Open your Command Prompt (Windows) or Terminal (macOS/Linux).**
+
+   *  **Navigate to the project directory.**
+    Use the `cd` command to change to the directory where you've cloned or downloaded this project.
+    ```bash
+    cd path/to/your/telecom_churn_project
+    ```
+    (Replace `path/to/your/telecom_churn_project` with the actual path on your system.)
+
+   *  **Create a Virtual Environment.**
+    This command creates a new directory (e.g., `telecom_churn_env`) inside your project folder, which will house the isolated Python environment. The `venv` module will use the Python 3.10.2 executable that is found first in your system's PATH when you execute the command.
+
+    ```bash
+    # If 'python' command points to Python 3.10.2:
+    python -m venv telecom_churn_env
+
+    # If you have multiple Python versions and 'py' launcher (Windows):
+    # py -3.10 -m venv telecom_churn_env
+
+    # If you have multiple Python versions and a specific executable (macOS/Linux):
+    # python3.10 -m venv telecom_churn_env
+    ```
+    *You can choose a different name for the environment if you prefer, but `telecom_churn_env` is used here for consistency.*
+
+   *  **Activate the Virtual Environment.**
+    You **must** activate the environment in each new command prompt/terminal session before working on the project.
+
+    - **On Windows (Command Prompt):**
         ```bash
-        conda create -n churn_env python=3.9
-        conda activate churn_env
+        .\telecom_churn_env\Scripts\activate
         ```
-        (Or use `venv` if preferred)
-    3.  **Install Dependencies:**
+    - **On Windows (PowerShell):**
+        ```powershell
+        .\telecom_churn_env\Scripts\Activate.ps1
+        ```
+    - **On macOS / Linux:**
         ```bash
-        pip install -r requirements.txt
+        source telecom_churn_env/bin/activate
         ```
-        (Ensure `requirements.txt` contains all listed Python libraries)
+    Once activated, your command prompt/terminal prompt will typically show the environment's name in parentheses, like `(telecom_churn_env) C:\path\to\your\telecom_churn_project>`.
+
+   *  **Install Required Libraries.**
+    With the virtual environment activated, install all the project's dependencies using the `requirements.txt` file provided.
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+    This command will install all necessary libraries with their precise versions.
+
     4.  **Place Dataset:** Ensure your raw dataset (`your_telecom_churn_data.csv`) is in the project root or specified path.
     5.  **Run Jupyter Notebook:** Execute the project notebook (e.g., `Churn_Prediction_Project.ipynb`) step-by-step to perform data processing, model training, and prediction export.
     6.  **PowerBI Integration:** Import the exported CSV (`churn_predictions_full_for_powerbi.csv`) into PowerBI Desktop. Build relationships with original data and configure visuals as described.
 
-## 9. Future Enhancements (Optional)
+## 9. Future Enhancements
 
 * **Advanced Feature Engineering:** Explore creating more complex features (e.g., interaction terms, time-series features if data permits).
 * **Cost-Sensitive Learning:** Incorporate specific business costs of false positives/negatives directly into model optimization within PowerBI reports.
