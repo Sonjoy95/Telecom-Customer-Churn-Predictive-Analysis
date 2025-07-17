@@ -52,15 +52,15 @@ Through systematic exploration, rigorous tuning, and a keen eye on real-world ap
 
 | Metric                     | Score  |
 | :------------------------- | :----- |
-| **Accuracy** | 0.7445 (0.7793 at Threshold 0.60) |
-| **F1-Score (Class 1 - Churn)** |0.6281 (0.6371 at Threshold 0.60) |
+| **Accuracy** | 0.7445 (0.7793 at Threshold 0.60)|
+| **F1-Score (Class 1 - Churn)** | 0.6281 (0.6371 at Threshold 0.60)|
 | **ROC-AUC Score** | 0.8463 |
 
 ## 6. PowerBI Dashboard Structure & Visualizations
 
 The PowerBI dashboard is designed across multiple pages to provide both high-level overviews and detailed analytical capabilities:
 
-* **Initial Page (e.g., "Overview" / "Introduction"):** Presents the project title, goals, target audience.
+* **Initial Page: Introduction:** Presents the project title, goals, target audience.
 * **Page 1: Churn Overview**
     * KPI cards: Overall churn rates (Actual & Predicted), Total Customers, Actual Churners, Predicted Churners.
     * Slicer: `Tenure Category` (e.g., 0-1 Year, 1-2 Years).
@@ -68,17 +68,17 @@ The PowerBI dashboard is designed across multiple pages to provide both high-lev
     * Histogram: Distribution of `Predicted Churn Probability`.
     * Donut Chart: Churn Rate by `Contract` Type.
     * Scatter Plots: `Monthly Charges` vs. `Predicted Churn Probability`; `Tenure` vs. `Predicted Churn Probability` (with 0.60 threshold line).
-* **Page 2: Churn Segment Analysis**
-    * Slicers: `Gender`, `Internet Service`, `Payment Method`, `Contract`.
-    * Matrix Visuals: Confusion Matrix; Classification Metrics (Precision, Recall, F1-Score), Accuracy and ROC-AUC Score.
+* **Page 2: Churn Segment Analysis:**
+    * Slicers: `Gender`, `Internet Service`, `Phone Service`, `Payment Method`, `Contract`.
+    * Matrix Visuals: Confusion Matrix; Classification Metrics (Precision, Recall, F1-Score, Accuracy).
     * Scatter Plot: `Total Charges` vs. `Predicted Churn Probability`.
     * Table: Top 100 High Risk Customers.
-* **Additional Page (e.g., "Segmented Churn Patterns"):**
-    * Small Multiples (Column Chart): `Predicted Churn Rate` vs. `Tenure Cohort`, broken down by `Gender` and `SeniorCitizen` (Small Multiples) and `InternetService` (Legend).
+* **Page 3: Segmented Churn Patterns**
+    * Small Multiples (Column Chart): `Predicted Churn Rate` vs. `Tenure Category Years`, broken down by `Gender` and `Senior Citizen` (Small Multiples) and `InternetService` (Legend).
 
 ## 7. Conclusion & Business Impact
 
-This project successfully developed a high-performing, computationally efficient, and user-friendly solution for predicting customer churn. By bridging the gap between advanced machine learning in Python and interactive business intelligence in PowerBI, this solution empowers businesses to:
+This project successfully developed and deployed a high-performing, computationally efficient, and user-friendly solution for predicting customer churn. By bridging the gap between advanced machine learning in Python and interactive business intelligence in PowerBI, this solution empowers businesses to:
 
 * **Proactively Drive Retention:** Identify high-risk customers with precision and timeliness.
 * **Optimize Resource Allocation:** Target retention efforts more effectively, reducing wasted spend.
@@ -91,74 +91,88 @@ This comprehensive approach transforms raw data into actionable intelligence, si
 
 * **Development Period:** June 30, 2025 - July 16, 2025
 * **Languages:** Python, DAX
-* **Libraries:** `pandas`, `numpy`, `scikit-learn`, `xgboost`, `lightgbm`, `catboost`, `matplotlib`, `seaborn`, `scipy`
+* **Libraries:**
+    * **Python:** 3.10.2
+    * **Pandas:** 2.2.3
+    * **NumPy:** 2.2.6
+    * **Scikit-learn:** 1.6.1
+    * **XGBoost:** 3.0.2
+    * **LightGBM:** 4.6.0
+    * **CatBoost:** 1.2.8
+    * **Matplotlib:** 3.10.3
+    * **Seaborn:** 0.13.2
+    * **SciPy:** 1.15.3
+    * **Jupyter Notebook:** 7.4.3 (for interactive development and analysis)
 * **Tools:** Jupyter Notebook, PowerBI Desktop
 * **Setup:**
-    1.  **Clone the Repository:**
+
+    To ensure the project runs correctly and to avoid dependency conflicts with other Python projects on your system, it's highly recommended to use a virtual environment with **Python 3.10.2**.
+
+    **Important Pre-requisite:**
+    Before proceeding, verify that you have **Python 3.10.2** installed on your system. You can check your default Python version by running `python --version` (or `python3 --version`). If Python 3.10.2 is not installed, please download and install it from the [official Python website](https://www.python.org/downloads/release/python-3102/).
+
+    Follow these steps to set up the environment:
+
+    1.  **Open your Command Prompt (Windows) or Terminal (macOS/Linux).**
+
+    2.  **Navigate to the project directory.**
+        Use the `cd` command to change to the directory where you've cloned or downloaded this project.
         ```bash
-        git clone https://github.com/Sonjoy95/Telecom-Customers-Churn-Predictive-Analysis.git
-        cd Telecon-Customer-Churn-Predictive-Analysis
+        cd path/to/your/telecom_churn_project
         ```
-    2.  ## Setting Up the Project Environment
-   - To ensure the project runs correctly and to avoid dependency conflicts with other Python projects on your system, it's highly recommended to use a virtual                    environment with **Python 3.10.2**.
+        (Replace `path/to/your/telecom_churn_project` with the actual path on your system.)
 
-  - **Important Pre-requisite:**
-  Before proceeding, verify that you have **Python 3.10.2** installed on your system. You can check your default Python version by running `python --version` (or `python3 --version`). If Python 3.10.2 is not installed, please download and install it from the [official Python website](https://www.python.org/downloads/release/python-3102/).
+    3.  **Create a Virtual Environment.**
+        This command creates a new directory (e.g., `telecom_churn_env`) inside your project folder, which will house the isolated Python environment. The `venv` module will use the Python 3.10.2 executable that is found first in your system's PATH when you execute the command.
 
-Follow these steps to set up the environment:
-
-   *  **Open your Command Prompt (Windows) or Terminal (macOS/Linux).**
-
-   *  **Navigate to the project directory.**
-    Use the `cd` command to change to the directory where you've cloned or downloaded this project.
-    ```bash
-    cd path/to/your/telecom_churn_project
-    ```
-    (Replace `path/to/your/telecom_churn_project` with the actual path on your system.)
-
-   *  **Create a Virtual Environment.**
-    This command creates a new directory (e.g., `telecom_churn_env`) inside your project folder, which will house the isolated Python environment. The `venv` module will use the Python 3.10.2 executable that is found first in your system's PATH when you execute the command.
-
-    ```bash
-    # If 'python' command points to Python 3.10.2:
-    python -m venv telecom_churn_env
-
-    # If you have multiple Python versions and 'py' launcher (Windows):
-    # py -3.10 -m venv telecom_churn_env
-
-    # If you have multiple Python versions and a specific executable (macOS/Linux):
-    # python3.10 -m venv telecom_churn_env
-    ```
-    *You can choose a different name for the environment if you prefer, but `telecom_churn_env` is used here for consistency.*
-
-   *  **Activate the Virtual Environment.**
-    You **must** activate the environment in each new command prompt/terminal session before working on the project.
-
-    - **On Windows (Command Prompt):**
         ```bash
-        .\telecom_churn_env\Scripts\activate
+        # If 'python' command points to Python 3.10.2:
+        python -m venv telecom_churn_env
+
+        # If you have multiple Python versions and 'py' launcher (Windows):
+        # py -3.10 -m venv telecom_churn_env
+
+        # If you have multiple Python versions and a specific executable (macOS/Linux):
+        # python3.10 -m venv telecom_churn_env
         ```
-    - **On Windows (PowerShell):**
-        ```powershell
-        .\telecom_churn_env\Scripts\Activate.ps1
-        ```
-    - **On macOS / Linux:**
+        *You can choose a different name for the environment if you prefer, but `telecom_churn_env` is used here for consistency.*
+
+    4.  **Activate the Virtual Environment.**
+        You **must** activate the environment in each new command prompt/terminal session before working on the project.
+
+        * **On Windows (Command Prompt):**
+            ```bash
+            .\telecom_churn_env\Scripts\activate
+            ```
+        * **On Windows (PowerShell):**
+            ```powershell
+            .\telecom_churn_env\Scripts\Activate.ps1
+            ```
+        * **On macOS / Linux:**
+            ```bash
+            source telecom_churn_env/bin/activate
+            ```
+        Once activated, your command prompt/terminal prompt will typically show the environment's name in parentheses, like `(telecom_churn_env) C:\path\to\your\telecom_churn_project>`.
+
+    5.  **Install Required Libraries.**
+        With the virtual environment activated, install all the project's dependencies using the `requirements.txt` file provided.
+
         ```bash
-        source telecom_churn_env/bin/activate
+        pip install -r requirements.txt
         ```
-    Once activated, your command prompt/terminal prompt will typically show the environment's name in parentheses, like `(telecom_churn_env) C:\path\to\your\telecom_churn_project>`.
+        This command will install all necessary libraries with their precise versions.
 
-   *  **Install Required Libraries.**
-    With the virtual environment activated, install all the project's dependencies using the `requirements.txt` file provided.
+    6.  **Deactivate the environment (when done).**
+        When you're finished working on the project, you can deactivate the environment.
 
-    ```bash
-    pip install -r requirements.txt
-    ```
-    This command will install all necessary libraries with their precise versions.
+        ```bash
+        deactivate
+        ```
+        (Alternatively, simply closing the command prompt/terminal window will also deactivate it.)
 
-    4.  **Place Dataset:** Ensure your raw dataset (`your_telecom_churn_data.csv`) is in the project root or specified path.
-    5.  **Run Jupyter Notebook:** Execute the project notebook (e.g., `Churn_Prediction_Project.ipynb`) step-by-step to perform data processing, model training, and prediction export.
-    6.  **PowerBI Integration:** Import the exported CSV (`churn_predictions_full_for_powerbi.csv`) into PowerBI Desktop. Build relationships with original data and configure visuals as described.
+    7.  **Place Dataset:** Ensure your raw dataset (`your_telecom_churn_data.csv`) is in the project root or specified path.
+    8.  **Run Jupyter Notebook:** Execute the project notebook (e.g., `Churn_Prediction_Project.ipynb`) step-by-step to perform data processing, model training, and prediction export.
+    9.  **PowerBI Integration:** Import the exported CSV (`churn_predictions_full_for_powerbi.csv`) into PowerBI Desktop. Build relationships with original data and configure visuals as described.
 
 ## 9. Future Enhancements
 
