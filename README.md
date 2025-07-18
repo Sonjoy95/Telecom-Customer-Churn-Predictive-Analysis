@@ -116,16 +116,18 @@ This comprehensive approach transforms raw data into actionable intelligence, si
 
     Follow these steps to set up the environment:
 
-    1.  **Open your Command Prompt (Windows) or Terminal (macOS/Linux).**
-
-    2.  **Navigate to the project directory.**
+    1.  **Open your Command Prompt (Windows) or Terminal (macOS/Linux) to clone the repository.**
+        ```bash
+        git clone https://github.com/Sonjoy95/Telecom-Customer-Churn-Predictive-Analysis.git
+        ```
+    3.  **Navigate to the project directory.**
         Use the `cd` command to change to the directory where you've cloned or downloaded this project.
         ```bash
         cd path/to/your/telecom_churn_project
         ```
         (Replace `path/to/your/telecom_churn_project` with the actual path on your system.)
 
-    3.  **Create a Virtual Environment.**
+    4.  **Create a Virtual Environment.**
         This command creates a new directory (e.g., `telecom_churn_env`) inside your project folder, which will house the isolated Python environment. The `venv` module will use the Python 3.10.2 executable that is found first in your system's PATH when you execute the command.
 
         ```bash
@@ -140,7 +142,7 @@ This comprehensive approach transforms raw data into actionable intelligence, si
         ```
         *You can choose a different name for the environment if you prefer, but `telecom_churn_env` is used here for consistency.*
 
-    4.  **Activate the Virtual Environment.**
+    5.  **Activate the Virtual Environment.**
         You **must** activate the environment in each new command prompt/terminal session before working on the project.
 
         * **On Windows (Command Prompt):**
@@ -157,7 +159,7 @@ This comprehensive approach transforms raw data into actionable intelligence, si
             ```
         Once activated, your command prompt/terminal prompt will typically show the environment's name in parentheses, like `(telecom_churn_env) C:\path\to\your\telecom_churn_project>`.
 
-    5.  **Install Required Libraries.**
+    6.  **Install Required Libraries.**
         With the virtual environment activated, install all the project's dependencies using the `requirements.txt` file provided.
 
         ```bash
@@ -165,7 +167,7 @@ This comprehensive approach transforms raw data into actionable intelligence, si
         ```
         This command will install all necessary libraries with their precise versions.
 
-    6.  **Deactivate the environment (when done).**
+    7.  **Deactivate the environment (when done).**
         When you're finished working on the project, you can deactivate the environment.
 
         ```bash
@@ -173,9 +175,9 @@ This comprehensive approach transforms raw data into actionable intelligence, si
         ```
         (Alternatively, simply closing the command prompt/terminal window will also deactivate it.)
 
-    7.  **Place Dataset:** Ensure your raw dataset (`your_telecom_churn_data.csv`) is in the project root or specified path.
-    8.  **Run Jupyter Notebook:** Execute the project notebook (e.g., `Churn_Prediction_Project.ipynb`) step-by-step to perform data processing, model training, and prediction export.
-    9.  **PowerBI Integration:** Import the exported CSV (`churn_predictions_full_for_powerbi.csv`) into PowerBI Desktop. Build relationships with original data and configure visuals as described.
+    8.  **Place Dataset:** Ensure your raw dataset (`your_telecom_churn_data.csv`) is in the project root or specified path.
+    9.  **Run Jupyter Notebook:** Execute the project notebook (e.g., `Churn_Prediction_Project.ipynb`) step-by-step to perform data processing, model training, and prediction export.
+    10.  **PowerBI Integration:** Import the exported CSV (`churn_predictions_full_for_powerbi.csv`) into PowerBI Desktop. Build relationships with original data and configure visuals as described.
 
 ## 9. Future Enhancements
 
