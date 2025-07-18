@@ -78,7 +78,7 @@ The PowerBI dashboard is designed across multiple pages to provide both high-lev
 
 ## 7. Conclusion & Business Impact
 
-This project successfully developed and deployed a high-performing, computationally efficient, and user-friendly solution for predicting customer churn. By bridging the gap between advanced machine learning in Python and interactive business intelligence in PowerBI, this solution empowers businesses to:
+This project successfully developed a high-performing, computationally efficient, and user-friendly solution for predicting customer churn. By bridging the gap between advanced machine learning in Python and interactive business intelligence in PowerBI, this solution empowers businesses to:
 
 * **Proactively Drive Retention:** Identify high-risk customers with precision and timeliness.
 * **Optimize Resource Allocation:** Target retention efforts more effectively, reducing wasted spend.
@@ -89,7 +89,7 @@ This comprehensive approach transforms raw data into actionable intelligence, si
 
 ## 8. Project Details & How to Run
 
-* **Development Period:** June 30, 2025 - July 16, 2025
+* **Development Period:** June 30, 2025 - July 17, 2025
 * **Languages:** Python, DAX
 * **Libraries:**
     * **Python:** 3.10.2
