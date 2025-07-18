@@ -74,7 +74,10 @@ The PowerBI dashboard is designed across multiple pages to provide both high-lev
     * Scatter Plot: `Total Charges` vs. `Predicted Churn Probability`.
     * Table: Top 100 High Risk Customers.
 * **Page 3: Segmented Churn Patterns**
-    * Small Multiples (Column Chart): `Predicted Churn Rate` vs. `Tenure Category Years`, broken down by `Gender` and `Senior Citizen` (Small Multiples) and `InternetService` (Legend).
+    * Mtrix Visual: Churn Risk Matrix
+    * Small Multiples (Column Chart): `Predicted Churn Rate` vs. `Tenure Cohort`, broken down by `Gender` and `Senior Citizen` (Small Multiples) and `InternetService` (Legend).
+    * 100% stacked column chart: Predicted Churners by `Contract` and `InternetService`
+    * Area Chart: Churn Probability by `Tenure Cohort`
 
 ## 7. Conclusion & Business Impact
 
