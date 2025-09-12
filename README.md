@@ -24,7 +24,7 @@ The project followed a systematic machine learning and business intelligence wor
 2.  **Data Preprocessing & Feature Engineering:**
     * **Missing Value Imputation:** Handled 11 missing `TotalCharges` values by imputing `0` for new customers (`tenure = 0`), maintaining logical consistency.
     * **Target Encoding:** Transformed the 'Churn' target variable from string labels ('No'/'Yes') to numerical (0/1).
-    * **Numerical Feature Transformation:** Applied power transformations (Yeo-Johnson for `tenure`, `TotalCharges`, and `SeniorCitizen` was later treated as categorical; Box-Cox for `MonthlyCharges`) to address skewness and improve distributional properties for certain models (creating the 'Z' dataset).
+    * **Numerical Feature Transformation:** Applied power transformations (Yeo-Johnson for `tenure`, `TotalCharges`, and `SeniorCitizen` was later treated as categorical; Box-Cox for `MonthlyCharges`) to address skewness and improve distributional properties for certain models (creating the 'x2' dataset).
     * **Categorical Feature Handling:** Prepared categorical features for model-specific processing.
 3.  **Class Imbalance Handling:** Applied `scale_pos_weight` to all boosting models to explicitly address the imbalance in the `Churn` target variable, prioritizing the correct identification of the minority class.
 4.  **Model Selection & Benchmarking:** Explored state-of-the-art gradient boosting algorithms: Random Forest, XGBoost, LightGBM, and CatBoost. Each model was first evaluated with baseline parameters to establish initial performance.
