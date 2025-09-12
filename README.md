@@ -43,8 +43,8 @@ Through systematic exploration, rigorous tuning, and a keen eye on real-world ap
 
 **Rationale for Best Model Selection:**
 
-* **Peak F1-Score (with Optimization):** Achieved an outstanding F1-Score of **0.6371** for the 'Churn' class when the classification threshold was optimally set to 0.60. This demonstrates a superior and business-aligned balance between minimizing missed churners (high Recall) and reducing unnecessary interventions (improved Precision).
-* **Strong Discriminative Power:** Maintained a high ROC-AUC score of **0.8463**, indicating its excellent ability to correctly rank customers by their likelihood of churning across various thresholds.
+* **Peak F1-Score (with Optimization):** Achieved an outstanding F1-Score of **0.6364** for the 'Churn' class when the classification threshold was optimally set to 0.60. This demonstrates a superior and business-aligned balance between minimizing missed churners (high Recall) and reducing unnecessary interventions (improved Precision).
+* **Strong Discriminative Power:** Maintained a high ROC-AUC score of **0.8466**, indicating its excellent ability to correctly rank customers by their likelihood of churning across various thresholds.
 * **Superior Generalization:** Exhibited very small train-test gaps across all metrics, confirming its robustness and reliability on unseen data.
 * **Exceptional Computational Efficiency:** A critical factor for practical deployment, XGBoost proved significantly faster during the iterative tuning process (2-3x faster than LightGBM, 9-10x faster than CatBoost). This efficiency enables quicker model iterations and faster insights delivery.
 
@@ -52,9 +52,9 @@ Through systematic exploration, rigorous tuning, and a keen eye on real-world ap
 
 | Metric                     | Score  |
 | :------------------------- | :----- |
-| **Accuracy** | 0.7445 (0.7793 at Threshold 0.60)|
-| **F1-Score (Class 1 - Churn)** | 0.6281 (0.6371 at Threshold 0.60)|
-| **ROC-AUC Score** | 0.8463 |
+| **Accuracy** | 0.7452 (0.7786 at Threshold 0.60)|
+| **F1-Score (Class 1 - Churn)** | 0.6280 (0.6364 at Threshold 0.60)|
+| **ROC-AUC Score** | 0.8466 |
 
 ## 6. PowerBI Dashboard Structure & Visualizations
 
@@ -177,7 +177,7 @@ This comprehensive approach transforms raw data into actionable intelligence, si
 
     8.  **Place Dataset:** Ensure your raw dataset (`your_telecom_churn_data.csv`) is in the project root or specified path.
     9.  **Run Jupyter Notebook:** Execute the project notebook (e.g., `Churn_Prediction_Project.ipynb`) step-by-step to perform data processing, model training, and prediction export.
-    10.  **PowerBI Integration:** Import the exported CSV (`churn_predictions_full_for_powerbi.csv`) into PowerBI Desktop. Build relationships with original data and configure visuals as described.
+    10.  **PowerBI Integration:** Import the exported CSV (`churn_predictions_df_for_powerbi.csv`) into PowerBI Desktop. Build relationships with original data and configure visuals as described.
 
 ## 9. Future Enhancements
 
