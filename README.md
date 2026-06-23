@@ -56,28 +56,65 @@ Through systematic exploration, rigorous tuning, and a keen eye on real-world ap
 | **F1-Score (Class 1 - Churn)** | 0.6280 (0.6364 at Threshold 0.60)|
 | **ROC-AUC Score** | 0.8466 |
 
-## 6. PowerBI Dashboard Structure & Visualizations
+## 6. Power BI Enterprise Data Modeling
+To transform raw model predictions into corporate strategy, the flat output table was refactored into a highly optimized **Star Schema** data model. Normalizing the model into isolated Fact and Dimension tables dramatically increases DAX calculation speeds and matches production-level enterprise database designs.
 
-The PowerBI dashboard is designed across multiple pages to provide both high-level overviews and detailed analytical capabilities:
+### Data Model Schema
 
-* **Initial Page: Introduction:** Presents the project title, goals, target audience.
-* **Page 1: Churn Overview**
-    * KPI cards: Overall churn rates (Actual & Predicted), Total Customers, Actual Churners, Predicted Churners.
-    * Slicer: `Tenure Category` (e.g., 0-1 Year, 1-2 Years).
-    * Bar Charts: Actual vs. Predicted Churn Counts; Churn Rate by Gender.
-    * Histogram: Distribution of `Predicted Churn Probability`.
-    * Donut Chart: Churn Rate by `Contract` Type.
-    * Scatter Plots: `Monthly Charges` vs. `Predicted Churn Probability`; `Tenure` vs. `Predicted Churn Probability` (with 0.60 threshold line).
-* **Page 2: Churn Segment Analysis:**
-    * Slicers: `Gender`, `Internet Service`, `Phone Service`, `Payment Method`, `Contract`.
-    * Matrix Visuals: Confusion Matrix; Classification Metrics (Precision, Recall, F1-Score, Accuracy).
-    * Scatter Plot: `Total Charges` vs. `Predicted Churn Probability`.
-    * Table: Top 100 High Risk Customers.
-* **Page 3: Segmented Churn Patterns**
-    * Mtrix Visual: Churn Risk Matrix
-    * Small Multiples (Column Chart): `Predicted Churn Rate` vs. `Tenure Cohort`, broken down by `Gender` and `Senior Citizen` (Small Multiples) and `InternetService` (Legend).
-    * 100% stacked column chart: Predicted Churners by `Contract` and `InternetService`
-    * Area Chart: Churn Probability by `Tenure Cohort`
+* **`fact_churn`**: `fact_id` (PK), `account_key` (FK), `customer_key` (FK), `service_key` (FK), `tenure_key` (FK), `actual_churn`, `predicted_churn_class`, `predicted_churn_probability`, `monthlycharges`, `totalcharges`.
+* **`dim_customer`**: `customer_key` (PK), `customer_id`, `gender`, `partner`, `dependents`, `SeniorCitizen`.
+* **`dim_contract_account`**: `account_key` (PK), `contract`, `paperlessbilling`, `paymentmethod`.
+* **`dim_services`**: `service_key` (PK), `phoneservice`, `multiplelines`, `onlinesecurity`, `onlinebackup`, `deviceprotection`, `techsupport`, `streamingtv`, `streamingmovies`, `internetprotection`.
+* **`dim_tenure`**: `tenure_key` (PK), `tenure` (Months), `Tenure Group` (e.g., "0-1 Year", "1-2 Years"), `Tenure Group Sort`.
+
+---
+
+### Dashboard Architecture & Insights
+
+The Power BI dashboard is designed using a professional widescreen canvas layout divided into two strategic, dedicated sections:
+
+### Page 1: Descriptive Analytics (Historical Performance)
+* **Objective:** Understand historical churn patterns and product performance.
+* **Core Metrics:** Total Historic Customers, Actual Churn Rate %, Total Monthly Revenue Lost.
+* **Granular Tenure Tracking:** A continuous line chart using raw `tenure` months mapping exactly *when* customers drop out, isolating the critical first 12-month onboarding risk zone.
+* **Dynamic Feature Deep-Dive:** Implemented **Field Parameters** allowing stakeholders to use a single clustered column chart to instantly toggle views between `Internet Service`, `Online Security`, `Phone Service`, `Device Protection` and `Tech Support` churn correlation.
+* **Strategic Takeaway:** Highlights that customers without integrated Tech Support or Online Security plans exhibit significantly higher historic churn rates.
+
+### Page 2: Predictive Insights (Forward-Looking Risk Forecasting)
+* **Objective:** Give the operational customer retention desk immediate, actionable leads to save high-value accounts *before* they cancel.
+* **Financial Risk Quantification:** Features a **"Monthly Revenue At Risk"** KPI card, translating simple customer counts into concrete dollar amounts to give executives immediate clarity on business impacts.
+* **Probability Segmentation:** A donut chart dividing customers into operational risk tiers (*High Risk >75%*, *Medium Risk 50-75%*, *Low Risk <50%*).
+* **The Call-to-Action Desk Sheet:** A dedicated, filtered table visual containing only active customers flagged as `predicted_churn_class = "Yes"`. The table is sorted by `predicted_churn_probability` descending and utilizes soft-gradient **conditional color formatting** to immediately guide an agent's eye to the highest-threat accounts.
+
+---
+
+### Core DAX Calculations Featured
+
+```dax
+-- Actual Churn Rate
+Actual Churn Rate = 
+DIVIDE(
+    CALCULATE(COUNT(fact_churn[customer_key]), fact_churn[actual_churn] = "Yes"),
+    COUNT(fact_churn[customer_key]),
+    0
+)
+
+-- Financial Revenue at Risk
+Monthly Revenue At Risk = 
+CALCULATE(
+    SUM(fact_churn[monthlycharges]), 
+    fact_churn[predicted_churn_class] = "Yes"
+)
+
+-- Risk Segmentation Column Logic
+Risk Tier = 
+SWITCH(
+    TRUE(),
+    fact_churn[predicted_churn_probability] >= 0.75, "High Risk (>75%)",
+    fact_churn[predicted_churn_probability] >= 0.50, "Medium Risk (50-75%)",
+    "Low Risk (<50%)"
+)
+```
 
 ## 7. Conclusion & Business Impact
 
